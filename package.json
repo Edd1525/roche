@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "cypress:open": "cypress open",
+    "start": "http-server ./app",
+    "test": "npx cypress run --browser chrome",
+    "appTest": "concurrently \"npm start\" \"npm test\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1",
+    "cypress": "^12.13.0"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
