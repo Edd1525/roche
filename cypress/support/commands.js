@@ -9,17 +9,22 @@
 // ***********************************************
 //
 //
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add("showSelectedEmployeesCity", (employeeAndCity) => {
+  cy.get("#btn").click();
+});
+
+Cypress.Commands.add("expandAllNames", () => {
+  return cy.get("td .jqx-icon-arrow-right").click();
+});
+
+Cypress.Commands.add("getListOfNamesAndCities", () => {
+  return cy.get('.jqx-listitem-state-normal')
+});
+
+Cypress.Commands.add("checkAllEmployees", () => {
+  return cy.get("tbody").find("tr").find(".jqx-tree-grid-checkbox").as("employeesCheck").click({ multiple: true });
+});
+
+Cypress.Commands.add("checkEmployeeByName", (name) => {
+  cy.contains('.jqx-tree-grid-title', name).parent().children('.jqx-tree-grid-checkbox').first().click();
+});
